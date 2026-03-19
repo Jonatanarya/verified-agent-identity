@@ -26,10 +26,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - name: Install ClawHub skill
-        run: npx clawhub@latest install verified-agent-identity
+      - name: Clone verified-agent-identity repo
+        run: git clone https://github.com/BillionsNetwork/verified-agent-identity.git temp
+
+      - name: Move scripts
+        run: mv temp/scripts ./scripts
 
       - name: Install dependencies
         run: |
